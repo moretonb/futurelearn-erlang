@@ -17,6 +17,7 @@ Personal cheat sheet
 * supported data types can be found <a href="http://erlang.org/documentation/doc-5.8/doc/reference_manual/data_types.html">here</a>
 * when pattern matching _ means I don't care what this is
 * erlang module documentation can be found <a href="http://erlang.org/doc/">here</a>
+* erlang unit testing documentation can be found <a href="http://erlang.org/doc/apps/eunit/chapter.html">here</a>
 
 Trivia
 ------
