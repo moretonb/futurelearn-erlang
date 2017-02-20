@@ -27,5 +27,5 @@ piecesinanydimensions(0,_) ->
   1;
 piecesinanydimensions(N,2) when N>0 ->
   pieces(N);
-piecesinanydimensions(N,M) when N>0, M>2 ->
-  piecesinanydimensions(N-1, M) + piecesinanydimensions(N-1,M-1).
+piecesinanydimensions(N,D) when N>0, D>2 ->
+  piecesinanydimensions(N-1, D) + piecesinanydimensions(N-1,D-1).
