@@ -2,6 +2,8 @@
 
 A repo to track things I do during the Erlang Futurelearn <a href="https://www.futurelearn.com/courses/functional-programming-erlang">course</a>.
 
+Visual Studio Code has quite a nice erlang plugin and a nice linter and is my editor of choice :)
+
 Personal cheat sheet
 --------------------
 * werl is on my windows path and spawns an Erlang shell
