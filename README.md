@@ -25,3 +25,5 @@ Trivia
 * <a href="https://en.wikipedia.org/wiki/Cake_number">Cake numbers</a>
 * <a href="https://en.wikipedia.org/wiki/Perfect_number">Perfect numbers</a>
 * <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci numbers</a>
+* <a href="https://en.wikipedia.org/wiki/Sorting_algorithm">Sorting algorithms</a>
+* <a href="https://en.wikipedia.org/wiki/Median_of_medians ">Median of medians</a>
