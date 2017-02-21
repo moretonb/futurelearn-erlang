@@ -1,5 +1,5 @@
 -module(listspractice).
--export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1,take/2,nub/1,bun/1,palindrome/1]).
+-export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1,take/2,nub/1,bun/1,palindrome/1,join/2,concat/1,member/2,any/2]).
 
 %Product of an empty list is 1 because 1* does not effect the product of
 %other lists.
@@ -103,7 +103,7 @@ palindrome(X) ->
   end.
 
 stripCharacters(X) ->
-  {ok,MP} = re:compile("^[a-z]"),
+  {ok,MP} = re:compile("^[a-z]$"),
   stripCharacters(X,[],MP).
 
 stripCharacters([],A,_) ->
@@ -112,4 +112,33 @@ stripCharacters([H|T],A,MP) ->
   case re:run([H],MP) of
     {match,_} -> stripCharacters(T, A ++ [H], MP);
     _ -> stripCharacters(T, A, MP)
+  end.
+
+join(X,Y) ->
+  join(X,Y,[]).
+
+join([],[],A) ->
+  lists:reverse(A);
+join([H|T],Y,A) ->
+  join(T,Y,[H|A]);
+join(X,[H|T],A) ->
+  join(X,T,[H|A]).
+
+concat(X) ->
+  concat(lists:reverse(X),[]).
+
+concat([],A) ->
+  A;
+concat([H|T],A) ->
+  concat(T,join(H,A)).
+
+member(X,Y) ->
+  any(fun(Element) -> Element==X end, Y).
+
+any(_,[]) ->
+  false;
+any(X,[H|T]) ->
+  case X(H) of
+    true -> true;
+    _ -> any(X,T)
   end.
