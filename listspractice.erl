@@ -52,8 +52,8 @@ mode(X) ->
       end
     end, KeysWithFrequency).
 
-elementFrequency(Element, [{Frequency,Key}|Frequencies]) when Element == Key ->
-  [{Frequency+1,Key}|Frequencies];
+elementFrequency(Element, [{Frequency,Element}|Frequencies]) ->
+  [{Frequency+1,Element}|Frequencies];
 elementFrequency(Element, X) ->
   [{1,Element}|X].
 
@@ -63,7 +63,7 @@ take(Number, Collection) ->
 
 take(_, [], _, Accumulator) ->
   Accumulator;
-take(Number, _, Current, Accumulator) when Number == Current ->
+take(Number, _, Number, Accumulator) ->
   Accumulator;
 take(Number, [Head|Tail], CurrentIndex, Accumulator) ->
   take(Number, Tail, CurrentIndex+1, Accumulator ++ [Head]).
@@ -78,7 +78,7 @@ nub([H|T], A) ->
 
 removeDuplicates(_, [], A) ->
   A;
-removeDuplicates(V,[H|T], A) when H == V ->
+removeDuplicates(V,[V|T], A) ->
   removeDuplicates(V,T,A);
 removeDuplicates(V,[H|T], A) ->
   removeDuplicates(V,T,A ++ [H]).
