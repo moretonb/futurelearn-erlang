@@ -1,5 +1,5 @@
 -module(listspractice).
--export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1,take/2,nub/1,bun/1]).
+-export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1,take/2,nub/1,bun/1,palindrome/1]).
 
 %Product of an empty list is 1 because 1* does not effect the product of
 %other lists.
@@ -90,3 +90,26 @@ nub([H|T], A) ->
 bun(X) ->
   Y = lists:reverse(X),
   lists:reverse(nub(Y)).
+
+palindrome(X) ->
+  Y = stripCharacters(string:to_lower(X)),
+  Length = lists:flatlength(Y),
+  {FirstHalf, Z} = lists:split(Length div 2, Y),
+  case Length rem 2 of
+    0 -> FirstHalf == lists:reverse(Z);
+    _ -> 
+      [_|SecondHalf] = Z,
+      FirstHalf == lists:reverse(SecondHalf)
+  end.
+
+stripCharacters(X) ->
+  {ok,MP} = re:compile("^[a-z]"),
+  stripCharacters(X,[],MP).
+
+stripCharacters([],A,_) ->
+  A;
+stripCharacters([H|T],A,MP) ->
+  case re:run([H],MP) of
+    {match,_} -> stripCharacters(T, A ++ [H], MP);
+    _ -> stripCharacters(T, A, MP)
+  end.
