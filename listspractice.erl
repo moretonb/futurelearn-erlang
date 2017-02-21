@@ -1,5 +1,5 @@
 -module(listspractice).
--export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1,take/2,nub/1]).
+-export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1,take/2,nub/1,bun/1]).
 
 %Product of an empty list is 1 because 1* does not effect the product of
 %other lists.
@@ -82,3 +82,7 @@ removeDuplicates(V,[V|T], A) ->
   removeDuplicates(V,T,A);
 removeDuplicates(V,[H|T], A) ->
   removeDuplicates(V,T,A ++ [H]).
+
+bun(X) ->
+  Y = lists:reverse(X),
+  lists:reverse(nub(Y)).
