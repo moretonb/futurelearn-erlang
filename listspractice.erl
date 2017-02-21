@@ -1,5 +1,5 @@
 -module(listspractice).
--export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1]).
+-export([product/1,producttail/1,maximum/1,maximumtail/1,double/1,evens/1,mode/1,median/1,take/2]).
 
 %Product of an empty list is 1 because 1* does not effect the product of
 %other lists.
@@ -57,3 +57,13 @@ elementFrequency(Element, [{Frequency,Key}|Frequencies]) when Element == Key ->
 elementFrequency(Element, X) ->
   [{1,Element}|X].
 
+
+take(Number, Collection) ->
+  take(Number, Collection, 0, []).
+
+take(_, [], _, Accumulator) ->
+  Accumulator;
+take(Number, _, Current, Accumulator) when Number == Current ->
+  Accumulator;
+take(Number, [Head|Tail], CurrentIndex, Accumulator) ->
+  take(Number, Tail, CurrentIndex+1, Accumulator ++ [Head]).
