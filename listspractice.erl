@@ -74,14 +74,18 @@ nub(X) ->
 nub([], A) ->
   A;
 nub([H|T], A) ->
-  nub(removeDuplicates(H,T,[]), A++[H]).
+  case lists:member(H,A) of
+    true -> nub(T, A);
+    _ -> nub(T, A++[H])
+  end.
+  %nub(removeDuplicates(H,T,[]), A++[H]).
 
-removeDuplicates(_, [], A) ->
-  A;
-removeDuplicates(V,[V|T], A) ->
-  removeDuplicates(V,T,A);
-removeDuplicates(V,[H|T], A) ->
-  removeDuplicates(V,T,A ++ [H]).
+%removeDuplicates(_, [], A) ->
+%  A;
+%removeDuplicates(V,[V|T], A) ->
+%  removeDuplicates(V,T,A);
+%removeDuplicates(V,[H|T], A) ->
+%  removeDuplicates(V,T,A ++ [H]).
 
 bun(X) ->
   Y = lists:reverse(X),
